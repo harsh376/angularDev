@@ -7,5 +7,5 @@ var myApp = angular.module('myApp', [
 	'myAppControllers',
 	// 'myAppDirectives',
 	// 'myAppFilters',
-	// 'myAppServices'
+	'myAppServices'
 ]);
