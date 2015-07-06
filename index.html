@@ -15,7 +15,20 @@
 	<body>
         <div ng-controller="updateFieldCtrl">
             <input type="number" ng-model="name"/>
-            <p>Hello, {{getName()}}</p>
+            <p>Hello, {{getName() | reverse}}</p>
         </div>
+
+        <div ng-controller="resetCtrl">
+            <label>Reset Colors</label>
+            <input type="checkbox" ng-model="resetColors">
+            <button ng-click="submit()">Submit</button>
+            <br>
+            <tt>{{result}}</tt>
+        </div>
+
+
+
+
+
 	</body>
 </html>

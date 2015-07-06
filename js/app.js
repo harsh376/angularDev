@@ -6,6 +6,6 @@ var myApp = angular.module('myApp', [
 	'ui.bootstrap',
 	'myAppControllers',
 	// 'myAppDirectives',
-	// 'myAppFilters',
+	'myAppFilters',
 	'myAppServices'
 ]);
