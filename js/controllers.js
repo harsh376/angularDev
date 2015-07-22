@@ -2,17 +2,17 @@
 
 /* Controllers */
 
-var myAppControllers = angular.module('myAppControllers', []);
+angular.module('myApp.Controllers', [])
 
-myAppControllers.controller('updateFieldCtrl', function($scope, computeSomething) {
+.controller('updateFieldCtrl', function($scope, computeSomething) {
     $scope.name = 15;
     
     $scope.getName = function() {
         return computeSomething.printMyName();
     }
-});
+})
 
-myAppControllers.controller('resetCtrl', function($scope) {
+.controller('resetCtrl', function($scope) {
 	$scope.resetColors = false;
 
 	$scope.result = 0;

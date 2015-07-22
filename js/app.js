@@ -4,8 +4,8 @@
 
 var myApp = angular.module('myApp', [
 	'ui.bootstrap',
-	'myAppControllers',
-	// 'myAppDirectives',
-	'myAppFilters',
-	'myAppServices'
+	'myApp.Controllers',
+	'myApp.Directives',
+	'myApp.Filters',
+	'myApp.Services'
 ]);

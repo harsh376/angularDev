@@ -2,9 +2,9 @@
 
 /* Services */
 
-var myAppServices = angular.module('myAppServices', []);
+angular.module('myApp.Services', [])
 
-myAppServices.factory('computeSomething', function() {
+.factory('computeSomething', function() {
 	var printMyName = function() {
 		return 'harsh';
 	};

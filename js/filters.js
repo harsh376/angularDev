@@ -1,8 +1,8 @@
 /* Filters */
 
-var myAppFilters = angular.module('myAppFilters', []);
+angular.module('myApp.Filters', [])
 
-myAppFilters.filter('reverse', function() {
+.filter('reverse', function() {
 	return function(input) {
 		input = input || '';
 		out = "";
