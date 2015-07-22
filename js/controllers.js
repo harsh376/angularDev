@@ -24,4 +24,12 @@ angular.module('myApp.Controllers', [])
 			$scope.result = 2;
 		}
 	};
+})
+
+.controller('testDirectiveCtrl', function($scope) {
+	$scope.something = 'earth';
+})
+
+.controller('testTranscludeCtrl', function($scope) {
+	$scope.val = 'one';
 });
