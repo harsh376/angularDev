@@ -13,11 +13,15 @@
 
 	</head>
 	<body>
+        <!-- testing the filter -->
         <div ng-controller="updateFieldCtrl">
             <input type="number" ng-model="name"/>
             <p>Hello, {{getName() | reverse}}</p>
         </div>
 
+        <hr>
+
+        <!-- testing submit() function in controller -->
         <div ng-controller="resetCtrl">
             <label>Reset Colors</label>
             <input type="checkbox" ng-model="resetColors">
@@ -26,9 +30,23 @@
             <tt>{{result}}</tt>
         </div>
 
+        <hr>
+
+        <!-- testing DOM manipulation through directive -->
+        <div ng-controller="testDirectiveCtrl">
+            <input type="text" ng-model="something">
+            <br>
+            <display-something val="something"></display-something>
+        </div>
+
+        <hr>
+
+        <div ng-controller="testTranscludeCtrl">
+            <test-transclude>{{val}}</test-transclude>
+        </div>
 
 
-
+        <hr>
 
 	</body>
 </html>
