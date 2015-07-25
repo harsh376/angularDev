@@ -2,7 +2,15 @@
 
 /* Controllers */
 
-angular.module('myApp.Controllers', [])
+angular.module('myApp.Controllers', ['doowb.angular-pusher'])
+
+.config(['PusherServiceProvider',
+  function(PusherServiceProvider) {
+    PusherServiceProvider
+    .setToken('f7159e9e2eea1dda351b')
+    .setOptions({});
+  }
+])
 
 .controller('updateFieldCtrl', function($scope, computeSomething) {
     $scope.name = 15;
@@ -34,11 +42,24 @@ angular.module('myApp.Controllers', [])
 	$scope.val = 'one';
 })
 
-.controller('testPusherCtrl', function($scope, requestService) {
+.controller('testPusherCtrl', function($scope, requestService, Pusher) {
+
+    $scope.conversation = [];
 
     $scope.send = function() {
-        $scope.response = requestService.addMessage($scope.message);       
+        $scope.response = requestService.addMessage($scope.message);
+
+        $scope.message = '';   
     }
 
-    
+    Pusher.subscribe('test-channel', 'voila', function(data) {
+        $scope.conversation.push(data.some);
+        
+        // alert('An event was triggered with message: ' + data.some);
+    });
+   
 });
+
+
+
+
