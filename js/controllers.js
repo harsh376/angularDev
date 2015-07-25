@@ -30,8 +30,15 @@ angular.module('myApp.Controllers', [])
 	$scope.something = 'earth';
 })
 
-.controller('testTranscludeCtrl', function($scope, requestService) {
+.controller('testTranscludeCtrl', function($scope) {
 	$scope.val = 'one';
+})
 
-    $scope.response = requestService.addMessage('testing');
+.controller('testPusherCtrl', function($scope, requestService) {
+
+    $scope.send = function() {
+        $scope.response = requestService.addMessage($scope.message);       
+    }
+
+    
 });
