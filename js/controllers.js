@@ -8,7 +8,9 @@ angular.module('myApp.Controllers', ['doowb.angular-pusher'])
   function(PusherServiceProvider) {
     PusherServiceProvider
     .setToken('f7159e9e2eea1dda351b')
-    .setOptions({});
+    .setOptions({
+        authEndpoint: 'http://127.0.0.1:5000/auth'
+    });
   }
 ])
 
@@ -52,7 +54,7 @@ angular.module('myApp.Controllers', ['doowb.angular-pusher'])
         $scope.message = '';   
     }
 
-    Pusher.subscribe('test-channel', 'voila', function(data) {
+    Pusher.subscribe('private-test-channel', 'voila', function(data) {
         $scope.conversation.push(data.some);
         
         // alert('An event was triggered with message: ' + data.some);
