@@ -2,17 +2,13 @@
 
 /* Controllers */
 
-angular.module('myApp.Controllers', ['doowb.angular-pusher'])
+angular.module('myApp.Controllers', ['pusher-angular'])
 
-.config(['PusherServiceProvider',
-  function(PusherServiceProvider) {
-    PusherServiceProvider
-    .setToken('f7159e9e2eea1dda351b')
-    .setOptions({
+.run(function($rootScope) {
+    $rootScope.client = new Pusher('f7159e9e2eea1dda351b', { 
         authEndpoint: 'http://127.0.0.1:5000/auth'
     });
-  }
-])
+})
 
 .controller('updateFieldCtrl', function($scope, computeSomething) {
     $scope.name = 15;
@@ -44,7 +40,7 @@ angular.module('myApp.Controllers', ['doowb.angular-pusher'])
 	$scope.val = 'one';
 })
 
-.controller('testPusherCtrl', function($scope, requestService, Pusher) {
+.controller('testPusherCtrl', function($scope, requestService, $pusher) {
 
     $scope.conversation = [];
 
@@ -54,12 +50,19 @@ angular.module('myApp.Controllers', ['doowb.angular-pusher'])
         $scope.message = '';   
     }
 
-    Pusher.subscribe('private-test-channel', 'voila', function(data) {
+    var client = $scope.client;
+    var pusher = $pusher(client);
+    var channel = pusher.subscribe('private-test-channel');
+
+    channel.bind('voila', function (data) {
         $scope.conversation.push(data.some);
-        
-        // alert('An event was triggered with message: ' + data.some);
     });
-   
+
+    client.connection.bind('connected', function() {
+        console.log('socket id: '+client.socket_id);
+        console.log('connection socket id: '+client.connection.socket_id);
+    });
+
 });
 
 
