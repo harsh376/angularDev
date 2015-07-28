@@ -56,12 +56,14 @@
         <hr>
 
         <div ng-controller="testPusherCtrl">
-            <div>
+            <div id="" style="overflow:auto; height:100px;">
                 <li ng-repeat="message in conversation">{{message}}</li>    
             </div>
             <br>
-            <input type="text" ng-model="message">
-            <button ng-click="send()">Send</button>
+            <div>
+                <input type="text" ng-model="message" style="width:70%;" test-enter="send()">
+                <button ng-click="send()">Send</button>
+            </div>
         </div>
 
 	</body>

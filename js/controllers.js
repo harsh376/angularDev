@@ -46,7 +46,6 @@ angular.module('myApp.Controllers', ['pusher-angular'])
 
     $scope.send = function() {
         $scope.response = requestService.addMessage($scope.message);
-
         $scope.message = '';   
     }
 

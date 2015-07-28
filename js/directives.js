@@ -28,6 +28,20 @@ angular.module('myApp.Directives', [])
 			scope.val = 'two';
 		}
 	};
+})
+
+.directive('testEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.testEnter);
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
 });
 
 
