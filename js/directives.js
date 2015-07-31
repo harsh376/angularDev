@@ -31,6 +31,7 @@ angular.module('myApp.Directives', [])
 	};
 })
 
+// directive that binds the enter key
 .directive('testEnter', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
@@ -45,6 +46,7 @@ angular.module('myApp.Directives', [])
     };
 })
 
+// directive that evaluates exp in the context of the original scope
 .directive('testIsolateScope', function() {
     return {
         templateUrl: 'partials/test-isolate-scope.html',
