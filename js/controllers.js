@@ -2,7 +2,13 @@
 
 /* Controllers */
 
-angular.module('myApp.Controllers', [])
+angular.module('myApp.Controllers', ['pusher-angular'])
+
+.run(function($rootScope) {
+    $rootScope.client = new Pusher('f7159e9e2eea1dda351b', { 
+        authEndpoint: 'http://127.0.0.1:5000/auth'
+    });
+})
 
 .controller('updateFieldCtrl', function($scope, computeSomething) {
     $scope.name = 15;
@@ -30,8 +36,42 @@ angular.module('myApp.Controllers', [])
 	$scope.something = 'earth';
 })
 
-.controller('testTranscludeCtrl', function($scope, requestService) {
+.controller('testTranscludeCtrl', function($scope) {
 	$scope.val = 'one';
+})
 
-    $scope.response = requestService.addMessage('testing');
+.controller('testPusherCtrl', function($scope, requestService, $pusher) {
+
+    $scope.conversation = [];
+
+    $scope.send = function() {
+        $scope.response = requestService.addMessage($scope.message);
+        $scope.message = '';
+    }
+
+    var client = $scope.client;
+    var pusher = $pusher(client);
+    var channel = pusher.subscribe('private-test-channel');
+
+    channel.bind('voila', function (data) {
+        $scope.conversation.push(data.some);
+
+        var elem = document.getElementById('data');
+        elem.scrollTop = elem.scrollHeight;
+    });
+
+    client.connection.bind('connected', function() {
+        console.log('socket id: '+client.socket_id);
+        console.log('connection socket id: '+client.connection.socket_id);
+    });
+
+})
+
+.controller('testIsolateScopeCtrl', function($scope) {
+    $scope.doSomething = function(message) {
+        alert('Hello ' + message);
+    };
 });
+
+
+

@@ -19,6 +19,7 @@ angular.module('myApp.Directives', [])
 	}
 })
 
+// directive that wraps other elements
 .directive('testTransclude', function() {
 
 	return {
@@ -28,6 +29,28 @@ angular.module('myApp.Directives', [])
 			scope.val = 'two';
 		}
 	};
-});
+})
 
+.directive('testEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.testEnter);
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+})
+
+.directive('testIsolateScope', function() {
+    return {
+        templateUrl: 'partials/test-isolate-scope.html',
+        scope: {
+            'pass': '&passSomething'
+        }
+    }
+});
 

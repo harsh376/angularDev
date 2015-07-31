@@ -4,8 +4,16 @@
 		<title>Hello</title>
 		<link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.css">
 		<script src="lib/angular/angular.js"></script>
+
 		<script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-		<script src="js/app.js"></script>
+
+        <!-- pusher-js -->
+        <script src="//js.pusher.com/2.2/pusher.min.js"></script>
+
+        <!-- pusher-angular -->
+        <script src="//cdn.jsdelivr.net/angular.pusher/latest/pusher-angular.min.js"></script>
+
+        <script src="js/app.js"></script>
 		<script src="js/controllers.js"></script>
 		<script src="js/directives.js"></script>
 		<script src="js/filters.js"></script>
@@ -45,8 +53,26 @@
             <test-transclude>{{val}}</test-transclude>
         </div>
 
-
         <hr>
+
+        <div ng-controller="testPusherCtrl">
+            <div id="data" style="overflow:auto; height:100px;">
+                <li ng-repeat="message in conversation">{{message}}</li>
+            </div>
+            <br>
+            <div>
+                <input type="text" ng-model="message" style="width:70%;" test-enter="send()">
+                <button ng-click="send()">Send</button>
+            </div>
+        </div>
+
+
+        <div ng-controller="testIsolateScopeCtrl">
+            <test-isolate-scope pass-something="doSomething(message)"></test-isolate-scope>
+        </div>
+
+
+
 
 	</body>
 </html>
