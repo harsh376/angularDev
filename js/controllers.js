@@ -46,7 +46,7 @@ angular.module('myApp.Controllers', ['pusher-angular'])
 
     $scope.send = function() {
         $scope.response = requestService.addMessage($scope.message);
-        $scope.message = '';   
+        $scope.message = '';
     }
 
     var client = $scope.client;
@@ -55,6 +55,9 @@ angular.module('myApp.Controllers', ['pusher-angular'])
 
     channel.bind('voila', function (data) {
         $scope.conversation.push(data.some);
+
+        var elem = document.getElementById('data');
+        elem.scrollTop = elem.scrollHeight;
     });
 
     client.connection.bind('connected', function() {
@@ -62,8 +65,13 @@ angular.module('myApp.Controllers', ['pusher-angular'])
         console.log('connection socket id: '+client.connection.socket_id);
     });
 
-});
+})
 
+.controller('testIsolateScopeCtrl', function($scope) {
+    $scope.doSomething = function(message) {
+        alert('Hello ' + message);
+    };
+});
 
 
 

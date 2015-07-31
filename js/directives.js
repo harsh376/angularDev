@@ -19,6 +19,7 @@ angular.module('myApp.Directives', [])
 	}
 })
 
+// directive that wraps other elements
 .directive('testTransclude', function() {
 
 	return {
@@ -42,6 +43,14 @@ angular.module('myApp.Directives', [])
             }
         });
     };
-});
+})
 
+.directive('testIsolateScope', function() {
+    return {
+        templateUrl: 'partials/test-isolate-scope.html',
+        scope: {
+            'pass': '&passSomething'
+        }
+    }
+});
 
