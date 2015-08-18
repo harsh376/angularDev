@@ -1,0 +1,23 @@
+{
+  "name": "angularDev",
+  "version": "1.0.0",
+  "description": "hello this is readme.",
+  "main": "index.html",
+  "dependencies": {
+    "bower": "^1.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/harsh376/angularDev.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harsh376/angularDev/issues"
+  },
+  "homepage": "https://github.com/harsh376/angularDev"
+}
